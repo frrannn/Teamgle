@@ -28,10 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form3));
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.instrtucciones = new System.Windows.Forms.RichTextBox();
             this.button1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
@@ -52,34 +50,34 @@
             this.label2.Size = new System.Drawing.Size(0, 13);
             this.label2.TabIndex = 1;
             // 
-            // instrtucciones
-            // 
-            this.instrtucciones.Location = new System.Drawing.Point(230, 114);
-            this.instrtucciones.Name = "instrtucciones";
-            this.instrtucciones.Size = new System.Drawing.Size(361, 79);
-            this.instrtucciones.TabIndex = 2;
-            this.instrtucciones.Text = resources.GetString("instrtucciones.Text");
-            this.instrtucciones.TextChanged += new System.EventHandler(this.RichTextBox1_TextChanged);
-            // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(516, 354);
+            this.button1.BackColor = System.Drawing.Color.Transparent;
+            this.button1.BackgroundImage = global::Project.Properties.Resources.image_97;
+            this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button1.FlatAppearance.BorderSize = 0;
+            this.button1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.button1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.ForeColor = System.Drawing.Color.Transparent;
+            this.button1.Location = new System.Drawing.Point(2, 4);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.Size = new System.Drawing.Size(105, 67);
             this.button1.TabIndex = 3;
-            this.button1.Text = "Volver";
-            this.button1.UseVisualStyleBackColor = true;
+            this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.Button1_Click);
             // 
             // Form3
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackgroundImage = global::Project.Properties.Resources.Group_333;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.button1);
-            this.Controls.Add(this.instrtucciones);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
+            this.DoubleBuffered = true;
             this.Name = "Form3";
             this.Text = "Form3";
             this.Load += new System.EventHandler(this.Form3_Load);
@@ -92,7 +90,6 @@
 
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.RichTextBox instrtucciones;
         private System.Windows.Forms.Button button1;
     }
 }

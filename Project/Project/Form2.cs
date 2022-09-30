@@ -12,20 +12,40 @@ namespace Project
 {
     public partial class Form2 : Form
     {
+        
         public Form2()
         {
             InitializeComponent();
+            
+            
         }
 
         private void Button3_Click(object sender, EventArgs e)
         {
-
+            Form6 niveldificil = new Form6();
+            niveldificil.Show();
+            this.Hide();
         }
 
         private void Button5_Click(object sender, EventArgs e)
         {
             Form1 FrancoRusso = new Form1();
             FrancoRusso.Show();
+            this.Hide();
+        }
+
+        private void Button1_Click(object sender, EventArgs e)
+        {
+            Form4 Nivelfacil = new Form4();
+            Nivelfacil.Show();
+            this.Hide();
+            
+        }
+
+        private void Button2_Click(object sender, EventArgs e)
+        {
+            Form5 nivelmedio = new Form5();
+            nivelmedio.Show();
             this.Hide();
         }
     }

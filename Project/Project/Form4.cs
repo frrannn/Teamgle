@@ -10,30 +10,18 @@ using System.Windows.Forms;
 
 namespace Project
 {
-    public partial class Form1 : Form
+    public partial class Form4 : Form
     {
-        public Form1()
+        public Form4()
         {
             InitializeComponent();
         }
 
-        private void Button1_Click(object sender, EventArgs e)
+        private void Button2_Click(object sender, EventArgs e)
         {
             Form2 FrancoRusso = new Form2();
             FrancoRusso.Show();
             this.Hide();
-
-        }
-
-        private void Button2_Click(object sender, EventArgs e)
-        {
-            Form3 FrancoRusso = new Form3();
-            FrancoRusso.Show();
-            this.Hide();
-        }
-
-        private void Label1_Click(object sender, EventArgs e)
-        {
 
         }
     }
