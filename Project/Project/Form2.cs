@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Data.OleDb;
+
 
 namespace Project
 {
@@ -16,9 +18,12 @@ namespace Project
         public Form2()
         {
             InitializeComponent();
-            
-            
+            OleDbConnection BaseDeDatosProyecto;
+
+            BaseDeDatosProyecto = new OleDbConnection();
+            BaseDeDatosProyecto.ConnectionString = @"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=TEAMGLE.accdb;";
         }
+
 
         private void Button3_Click(object sender, EventArgs e)
         {

@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+
 namespace Project
 {
     public partial class Form1 : Form
@@ -17,7 +18,9 @@ namespace Project
             InitializeComponent();
         }
 
-        private void Button1_Click(object sender, EventArgs e)
+        
+
+          private void Button1_Click(object sender, EventArgs e)
         {
             Form2 FrancoRusso = new Form2();
             FrancoRusso.Show();
@@ -36,5 +39,7 @@ namespace Project
         {
 
         }
+      
+
     }
 }

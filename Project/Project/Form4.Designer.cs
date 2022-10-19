@@ -32,7 +32,13 @@
             this.button1 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
+            this.Liga = new System.Windows.Forms.Label();
+            this.Fundacion = new System.Windows.Forms.Label();
+            this.Escudo = new System.Windows.Forms.PictureBox();
+            this.Mensajefin = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.Titulos = new System.Windows.Forms.Label();
+            ((System.ComponentModel.ISupportInitialize)(this.Escudo)).BeginInit();
             this.SuspendLayout();
             // 
             // textBox1
@@ -44,7 +50,6 @@
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(256, 20);
             this.textBox1.TabIndex = 0;
-            this.textBox1.Text = "Escribe aqui el nommbre del equipo";
             this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // button1
@@ -88,14 +93,55 @@
             this.button2.UseVisualStyleBackColor = false;
             this.button2.Click += new System.EventHandler(this.Button2_Click);
             // 
+            // Liga
+            // 
+            this.Liga.Location = new System.Drawing.Point(78, 313);
+            this.Liga.Name = "Liga";
+            this.Liga.Size = new System.Drawing.Size(93, 24);
+            this.Liga.TabIndex = 4;
+            // 
+            // Fundacion
+            // 
+            this.Fundacion.Location = new System.Drawing.Point(272, 313);
+            this.Fundacion.Name = "Fundacion";
+            this.Fundacion.Size = new System.Drawing.Size(81, 23);
+            this.Fundacion.TabIndex = 5;
+            this.Fundacion.Visible = false;
+            // 
+            // Escudo
+            // 
+            this.Escudo.Location = new System.Drawing.Point(638, 313);
+            this.Escudo.Name = "Escudo";
+            this.Escudo.Size = new System.Drawing.Size(100, 50);
+            this.Escudo.TabIndex = 7;
+            this.Escudo.TabStop = false;
+            // 
+            // Mensajefin
+            // 
+            this.Mensajefin.AutoSize = true;
+            this.Mensajefin.BackColor = System.Drawing.SystemColors.InactiveBorder;
+            this.Mensajefin.Location = new System.Drawing.Point(335, 46);
+            this.Mensajefin.Name = "Mensajefin";
+            this.Mensajefin.Size = new System.Drawing.Size(0, 13);
+            this.Mensajefin.TabIndex = 8;
+            // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(56, 291);
+            this.label2.BackColor = System.Drawing.SystemColors.InactiveBorder;
+            this.label2.Location = new System.Drawing.Point(237, 137);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(35, 13);
-            this.label2.TabIndex = 4;
-            this.label2.Text = "label2";
+            this.label2.Size = new System.Drawing.Size(174, 13);
+            this.label2.TabIndex = 9;
+            this.label2.Text = "Escribe aqui el nommbre del equipo";
+            // 
+            // Titulos
+            // 
+            this.Titulos.Location = new System.Drawing.Point(469, 313);
+            this.Titulos.Name = "Titulos";
+            this.Titulos.Size = new System.Drawing.Size(77, 24);
+            this.Titulos.TabIndex = 6;
+            this.Titulos.Visible = false;
             // 
             // Form4
             // 
@@ -105,6 +151,11 @@
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.label2);
+            this.Controls.Add(this.Mensajefin);
+            this.Controls.Add(this.Escudo);
+            this.Controls.Add(this.Titulos);
+            this.Controls.Add(this.Fundacion);
+            this.Controls.Add(this.Liga);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.button1);
@@ -112,6 +163,8 @@
             this.DoubleBuffered = true;
             this.Name = "Form4";
             this.Text = "Form4";
+            this.Load += new System.EventHandler(this.Form4_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.Escudo)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -123,6 +176,11 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Label Liga;
+        private System.Windows.Forms.Label Fundacion;
+        private System.Windows.Forms.PictureBox Escudo;
+        private System.Windows.Forms.Label Mensajefin;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label Titulos;
     }
 }
