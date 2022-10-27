@@ -11,8 +11,12 @@ using System.Data.OleDb;
 
 namespace Project
 {
+    
     public partial class Form4 : Form
     {
+        string EquipoCorrecto;
+        
+     
         public Form4()
         {
 
@@ -21,102 +25,87 @@ namespace Project
 //Yo suelo crear una clase P y en ella declaro las variables como public static,
 //pudiendo acceder a ellas desde cualquier sitio tan solo añadiendo P.Variable,
 //comportandose asi igual que si las declarases en un modulo de visual basic
-            InitializeComponent();
-            string connetionString = null;
-            OleDbConnection connection;
-            OleDbDataAdapter oledbAdapter;
-            string sql = null;
-            int i = 0;
-            DataSet ds = new DataSet();
+        
 
+        InitializeComponent();
 
-            connetionString = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=TEAMGLE.accdb;";
-            sql = "SELECT * FROM EquiposFaciles where iD between 1 and 10";
-            connection = new OleDbConnection(connetionString);
-            try
+            DataTable dt = new DataTable();
+
+            string connetionString = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=TEAMGLE.accdb;";
+            OleDbConnection connection = new OleDbConnection(connetionString);
+            connection.Open();
+
+            
             {
-                connection.Open();
-                oledbAdapter = new OleDbDataAdapter(sql, connection);
-                oledbAdapter.Fill(ds);
-                oledbAdapter.Dispose();
-                connection.Close();
 
-                Liga.Text = Convert.ToString (ds.Tables[0].Rows[0].ItemArray[2]);
-                Fundacion.Text = Convert.ToString(ds.Tables[0].Rows[0].ItemArray[3]);
-                Titulos.Text = Convert.ToString(ds.Tables[0].Rows[0].ItemArray[4]);
+                string query = "select * from EquiposFaciles";
 
-             
-
-                //               for (i = 0; i <= ds.Tables[0].Rows.Count - 1; i++)
-                //               {
-                //                   MessageBox.Show(ds.Tables[0].Rows[i].ItemArray[0] + " -- " + ds.Tables[0].Rows[i].ItemArray[1] + " -- " + ds.Tables[0].Rows[i].ItemArray[2] + " -- " + ds.Tables[0].Rows[i].ItemArray[3]+ " -- " + ds.Tables[0].Rows[i].ItemArray[4] + " -- " + ds.Tables[0].Rows[i].ItemArray[5]);
-                //               }
-            }
-            catch (Exception ex)
-            { 
-                MessageBox.Show("Can not open connection ! ");
+                OleDbCommand cmd = new OleDbCommand(query, connection);
+                OleDbDataAdapter da = new OleDbDataAdapter(cmd);
+                da.Fill(dt);
 
             }
+            datagrid.DataSource = dt;
+            EquipoCorrecto= datagrid.Rows[0].Cells[1].Value.ToString();
+            connection.Close();
+            
+            Liga.Text = datagrid.Rows[0].Cells[2].Value.ToString();
+            Fundacion.Text = datagrid.Rows[0].Cells[3].Value.ToString();
+            Titulos.Text = datagrid.Rows[0].Cells[4].Value.ToString();
+            RowEq.Text = "0";
+            CantAciertos.Text = "0";
+            CantError.Text = "0";
 
 
-                //            OleDbConnection BaseDeDatosProyecto;
-
-                //            BaseDeDatosProyecto = new OleDbConnection();
-                //            BaseDeDatosProyecto.ConnectionString = @"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=TEAMGLE.accdb;";
-                //            int IdEquipo = 1;
-                //            OleDbCommand Ligad;
-                //            BaseDeDatosProyecto.Open();
-                //            string sql = "SELECT liga FROM EquiposFaciles WHERE Id = " + IdEquipo + "";
-
-                //            Ligad = new OleDbCommand(sql, BaseDeDatosProyecto);
-                //            OleDbDataAdapter da = new OleDbDataAdapter(Ligad);
-
-                //            DataSet ds = new DataSet();
-                //            da.Fill(ds, "EquiposFaciles");
-                //            string Liga = ds.Tables["EquiposFaciles"].Rows[0][0].ToString();
-                //            this.Liga.Text = Liga;
-
-                /////////////////////////////////////////////////////////////////////////////////////////
-                //            OleDbCommand Anio_Fundacion;
-                //                 string sqlf = "SELECT Anio_Fundacion FROM EquiposFaciles WHERE Id = " + IdEquipo + "";
-
-                //         Anio_Fundacion = new OleDbCommand(sqlf, BaseDeDatosProyecto);
-                //            OleDbDataAdapter daf = new OleDbDataAdapter(Anio_Fundacion);
-                //            DataSet dsf = new DataSet();
-                //            daf.Fill(dsf, "EquiposFaciles");
-                //            string AnioFundacion = dsf.Tables["EquiposFaciles"].Rows[0][0].ToString();
-                //            Fundacion.Text = AnioFundacion;
-                //            //////////////////////////////////////////////////////////////////////////////////////
-
-                //            OleDbCommand Titulod;
-                //            string sqlt = "SELECT Titulos FROM EquiposFaciles WHERE Id = " + IdEquipo + "";
-
-                //            Titulod = new OleDbCommand(sqlt, BaseDeDatosProyecto);
-                //            OleDbDataAdapter dat = new OleDbDataAdapter(Titulod);
-                //            DataSet dset = new DataSet();
-                //            dat.Fill(dset, "EquiposFaciles");
-                //            string Titulos = dset.Tables["EquiposFaciles"].Rows[0][0].ToString();
-                //            Titulo.Text = Titulos;
+            //var ValidadorEq = new validador();
+            //ValidadorEq.txtValido = "River Plate";
+            //ValidadorEq.txtaValidar =  "river ";
 
 
 
+            //  string connetionString = null;
+            // OleDbConnection connection;
+            // OleDbDataAdapter oledbAdapter;
+            //  string sql = null;
 
 
-                //OleDbCommand comando = new OleDbCommand(comprobacion, conexion);
-                //OleDbDataReader lector;
-                //lector = comando.ExecuteReader();
-                //        Boolean existencia = lector.HasRows;
-                //        if (existencia)
-                //        {
-
-                //            MessageBox.Show("El dato existe");
-
-                //        }
-
-            }
+            //   DataSet ds = new DataSet();
 
 
-            private void Button2_Click(object sender, EventArgs e)
+            //connetionString = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=TEAMGLE.accdb;";
+            //    sql = "SELECT * FROM EquiposFaciles where iD between 1 and 10";
+            //    connection = new OleDbConnection(connetionString);
+            //    try
+            //    {
+            //        connection.Open();
+            //        oledbAdapter = new OleDbDataAdapter(sql, connection);
+            //        oledbAdapter.Fill(ds);
+            //        oledbAdapter.Dispose();
+            //        connection.Close();
+            //        Equipo.Text = Convert.ToString(ds.Tables[0].Rows[0].ItemArray[1]);
+            //        Liga.Text = Convert.ToString (ds.Tables[0].Rows[0].ItemArray[2]);
+            //        Fundacion.Text = Convert.ToString(ds.Tables[0].Rows[0].ItemArray[3]);
+            //        Titulos.Text = Convert.ToString(ds.Tables[0].Rows[0].ItemArray[4]);
+
+
+
+            //               for (i = 0; i <= ds.Tables[0].Rows.Count - 1; i++)
+            //               {
+            //                   MessageBox.Show(ds.Tables[0].Rows[i].ItemArray[0] + " -- " + ds.Tables[0].Rows[i].ItemArray[1] + " -- " + ds.Tables[0].Rows[i].ItemArray[2] + " -- " + ds.Tables[0].Rows[i].ItemArray[3]+ " -- " + ds.Tables[0].Rows[i].ItemArray[4] + " -- " + ds.Tables[0].Rows[i].ItemArray[5]);
+            //               }
+            //}
+            //catch (Exception ex)
+            //{ 
+            //    MessageBox.Show("Can not open connection ! ");
+
+            //}
+
+
+        }
+
+
+
+        private void Button2_Click(object sender, EventArgs e)
         {
             Form2 FrancoRusso = new Form2();
             FrancoRusso.Show();
@@ -126,32 +115,165 @@ namespace Project
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
-
+            
       
         }
-
+      
+            
         private void button1_Click(object sender, EventArgs e)
+
         {
-            if (Fundacion.Visible)
+          
+            
+
+
+            if (textBox1.Text == EquipoCorrecto)
+
             {
-                Titulos.Visible = true;
+                MessageBox.Show("acertaste");
+                textBox1.Text = "";
+                RowEq.Text = Convert.ToString(Convert.ToInt32(RowEq.Text)+ 1);
+               CantAciertos.Text = Convert.ToString(Convert.ToInt32(CantAciertos.Text) + 1);
+
+                EquipoCorrecto = datagrid.Rows[Convert.ToInt32(RowEq.Text)].Cells[1].Value.ToString();
+                Liga.Text = datagrid.Rows[Convert.ToInt32(RowEq.Text)].Cells[2].Value.ToString();
+                Fundacion.Text = datagrid.Rows[Convert.ToInt32(RowEq.Text)].Cells[3].Value.ToString();
+                Titulos.Text = datagrid.Rows[Convert.ToInt32(RowEq.Text)].Cells[4].Value.ToString();
+
+                Fundacion.Visible = false;
+                Titulos.Visible = false;
             }
+
             else
             {
-                Fundacion.Visible = true;
+
+
+                if (Titulos.Visible)
+                {
+
+                    MessageBox.Show("perdiste");
+                    CantError.Text = Convert.ToString(Convert.ToInt32(CantError.Text) + 1);
+                    textBox1.Text = "";
+                    RowEq.Text = Convert.ToString(Convert.ToInt32(RowEq.Text) + 1);
+
+                    EquipoCorrecto = datagrid.Rows[Convert.ToInt32(RowEq.Text)].Cells[1].Value.ToString();
+                    Liga.Text = datagrid.Rows[Convert.ToInt32(RowEq.Text)].Cells[2].Value.ToString();
+                    Fundacion.Text = datagrid.Rows[Convert.ToInt32(RowEq.Text)].Cells[3].Value.ToString();
+                    Titulos.Text = datagrid.Rows[Convert.ToInt32(RowEq.Text)].Cells[4].Value.ToString();
+
+                    Fundacion.Visible = false;
+                    Titulos.Visible = false;
+
+                }
+
+
+           else     if (Fundacion.Visible)
+                {
+                    MessageBox.Show("No acertaste");
+                    textBox1.Text = "";
+                    Titulos.Visible = true;
+
+                }
+
+
+                else
+                {
+                    MessageBox.Show("No acertaste");
+                    textBox1.Text = "";
+                    Fundacion.Visible = true;
+                }
+                   
+                
             }
 
-            if (Titulos.Visible)
-            {
-                Liga.Text = Convert.ToString(ds.Tables[0].Rows[1].ItemArray[2]);
-                Fundacion.Text = Convert.ToString(ds.Tables[0].Rows[1].ItemArray[3]);
-                Titulos.Text = Convert.ToString(ds.Tables[0].Rows[1].ItemArray[4]);
-            }
+
+            
+               
+
+            
+
+
+                
         }
 
 
 
         private void Form4_Load(object sender, EventArgs e)
+        {
+            // TODO: esta línea de código carga datos en la tabla 'tEAMGLEDataSet.EquiposFaciles' Puede moverla o quitarla según sea necesario.
+            //this.equiposFacilesTableAdapter.Fill(this.tEAMGLEDataSet.EquiposFaciles);
+
+        }
+
+        private void fillByToolStripButton_Click(object sender, EventArgs e)
+        {
+        //    try
+        //    {
+        //        this.equiposFacilesTableAdapter.FillBy(this.tEAMGLEDataSet.EquiposFaciles);
+        //    }
+        //    catch (System.Exception ex)
+        //    {
+        //        System.Windows.Forms.MessageBox.Show(ex.Message);
+        //    }
+
+        }
+
+        private void Liga_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void datagrid_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Equipo_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Mensajefin_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Escudo_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Titulos_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Fundacion_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void RowEq_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label4_Click(object sender, EventArgs e)
         {
 
         }
